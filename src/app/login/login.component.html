@@ -1,0 +1,36 @@
+<div class="card" *ngIf="!registration">
+  <div class="flex flex-column md:flex-row">
+    <div class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5">
+      <form [formGroup]="loginForm" (ngSubmit)="loginWithCustomJwt()" novalidate>
+        <div class="flex flex-wrap justify-content-center align-items-center gap-2">
+          <label class="w-6rem">Username   </label>
+          <input pInputText id="username" formControlName="email" type="email" class="w-12rem" required="required" />
+        </div>
+        <div class="flex flex-wrap justify-content-center align-items-center gap-2">
+          <label class="w-6rem">Password       </label>
+          <input pInputText id="password" formControlName="password" type="password" class="w-12rem" required="required" />
+        </div>
+        <p-button type="submit" label="Login" icon="pi pi-user"  [rounded]="true"/>
+      </form>
+    </div>
+    <div class="w-full md:w-2">
+      <p-divider layout="horizontal" styleClass="flex md:hidden" [align]="'center'">
+      </p-divider>
+    </div>
+    <div class="w-full md:w-5 flex align-items-center justify-content-center py-5">
+      <p-button (click)="register()" label="Sign Up" icon="pi pi-user-plus" [raised]="true" severity="danger"  [rounded]="true"  />
+    </div>
+
+    <br />
+
+    <a href="{{urlGoogleCode}}" (click)="setOauth2Provider('google')"><img src="assets/google-signin.png" 
+       alt="Sign in with Google" style="width:242px;height:45px;"></a>
+    <br /><br />
+    <a href="{{urlGithubCode}}" (click)="setOauth2Provider('github')"><img src="assets/github-signin.png" 
+      alt="Sign in with Google" style="width:242px;height:45px;"></a>
+
+  </div>
+</div>
+
+
+<app-register *ngIf="registration"/>

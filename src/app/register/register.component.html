@@ -1,0 +1,31 @@
+<p-card styleClass="user-form" class="flex justify-content-center">
+    <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+
+        <div class="field">
+            <label for="name" class="block">Name</label>
+            <input type="text" pInputText placeholder="Name" formControlName="name" />
+            <small class="p-error block" *ngIf="
+            registerForm.get('name')?.invalid && registerForm.get('name')?.dirty">
+                Name is required</small>
+        </div>
+
+        <div class="field">
+            <label for="email" class="block">Email</label>
+            <input type="email" pInputText placeholder="Email" formControlName="email" />
+            <small class="p-error block" *ngIf="
+            registerForm.get('email')?.invalid && registerForm.get('email')?.dirty">
+                Email is required</small>
+        </div>
+
+        <div class="field">
+            <label for="password" class="block">Password</label>
+            <input type="password" pInputText placeholder="Password" formControlName="password" />
+            <small class="p-error block" *ngIf="
+            registerForm.get('password')?.invalid && registerForm.get('password')?.dirty">
+                Password is required</small>
+        </div>
+
+        <button pButton type="submit" label="Submit" [disabled]="registerForm.invalid"></button>
+        <button pButton label="Go to Login" (click)="login()"></button>
+    </form>
+</p-card>

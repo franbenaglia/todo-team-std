@@ -1,0 +1,56 @@
+<section class="sample-app-content">
+    <h1>{{title}}</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p>
+            <label>Title:</label>
+            <input type="text" formControlName="title" #newTitle (keypress)="keyPress($event)">
+        </p>
+        <p>
+            <label>Dir:</label>
+            <input type="text" formControlName="dir" #newDir (keypress)="keyPress($event)">
+        </p>
+
+        <p><label>Description:</label>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="description" #newDescription
+                (keypress)="keyPress($event)"></textarea>
+        </p>
+
+        <p><label>User:</label>
+            <p-dropdown formControlName="user" [(ngModel)]="user" [options]="users" optionLabel="name"
+                placeholder= {{placeHolder}}/>
+            {{user.name}}
+        </p>
+
+        <p><label>State:</label>
+            <p-dropdown formControlName="state" [options]="states" optionLabel="state"
+                placeholder="select state"/>
+            {{task ? task.state : ''}}
+        </p>
+
+        <p>
+            <!--p-fileUpload  mode="basic" chooseLabel="Choose" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*"  (onUpload)="onUpload($event)"></p-fileUpload-->
+
+            <label for="avatar">Avatar</label>
+            <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
+            <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+
+        </p>
+
+        <p-button type="submit" *ngIf="isButtonVisible" [disabled]="!form.valid" label="Accept"
+            styleClass="p-button-success">
+        </p-button>
+
+        <p-button (click)="delete($event)" *ngIf="isButtonVisible" label="Delete" styleClass="p-button-danger">
+        </p-button>
+
+        <p-button (click)="closeModal($event)" *ngIf="isButtonVisible" label="Close" styleClass="p-button-danger">
+        </p-button>
+
+
+    </form>
+
+    <div>
+        <img [src]="image" alt="-">
+    </div>
+
+</section>

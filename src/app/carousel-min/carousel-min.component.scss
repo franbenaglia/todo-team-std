@@ -1,0 +1,28 @@
+.p-hide-paginator {
+  .p-carousel-indicators {
+    display: none !important;
+  }
+}
+
+:host ::ng-deep {
+  .drop-column {
+    border: 1px solid transparent;
+    transition: border-color .2s;
+
+    &.p-draggable-enter {
+      border-color: var(--primary-color);
+    }
+  }
+
+  [pDraggable] {
+    cursor: move;
+  }
+}
+
+.barrs {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: auto;
+}

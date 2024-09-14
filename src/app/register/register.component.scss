@@ -1,0 +1,35 @@
+:host>>>.user-form {
+  width: 30%;
+}
+
+:host>>>.p-inputtext {
+  width: 100%;
+}
+
+input[type=text] {
+  background-color: white;
+  color: black;
+}
+
+input[type=password] {
+  background-color: white;
+  color: black;
+}
+
+input[type=email] {
+  background-color: white;
+  color: black;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px black inset !important;
+}
+
+div {
+  padding: 5px;
+}

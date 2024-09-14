@@ -1,0 +1,18 @@
+<div class="card flex justify-content-center">
+  <p-menubar [model]="items" >
+    <ng-template pTemplate="item" let-item>
+      <ng-container>
+        <a [routerLink]="item.route" class="p-menuitem-link">
+          <span class="ml-2">{{ item.label }}</span>
+          <span>&nbsp;</span>
+          <span [class]="item.icon"></span>
+        </a>
+      </ng-container>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class="flex align-items-center gap-2">
+        {{userName ? 'User: ' + userName : ''}} {{email ? 'Email: ' + email : ''}} {{role}}
+      </div>
+  </ng-template>
+  </p-menubar>
+</div>

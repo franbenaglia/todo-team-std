@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/luna-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import 'primeicons/primeicons.css';
+
+
+//body {
+    ///background-color: rgb(5, 8, 8);
+    //color: blue;
+ // }
+
+  .p-hide-paginator{
+    .p-carousel-indicators{
+      display: none !important;
+    }
+  }
+ 

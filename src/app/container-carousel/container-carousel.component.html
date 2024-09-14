@@ -1,0 +1,22 @@
+<!--h2 style="color: green">TODO</h2-->
+
+<div style="text-align: center">
+
+	<p-dialog [modal]="true" header="TODO" [(visible)]="BasicShow" [breakpoints]="{ '960px': '75vw' }" [style]="{width: '50vw'}"
+		[draggable]="false" [resizable]="false">
+
+		<app-card (newCardEvent)="addTask($event)" (closeEvent)="closeModal($event)" [users]="users" [isButtonVisible]="true" />
+
+	</p-dialog>
+
+	<p-button (click)="showDialog()" label="New task">
+	</p-button>
+</div>
+
+<p-carousel [value]="tasks" [numVisible]="1" [circular]="true" verticalViewPortHeight="360px" orientation="vertical">
+	<ng-template let-task pTemplate="item">
+		<div style="text-align: center">
+			<app-card (newCardEvent)="addTask($event)" (deleteEvent)="deleteTask($event)" [users]="users" [task]="task" [isButtonVisible]="false" />
+		</div>
+	</ng-template>
+</p-carousel>

@@ -1,0 +1,53 @@
+<div style="text-align: center">
+
+    <p-dialog [modal]="true" *ngIf="basicShow" [(visible)]="basicShow" [breakpoints]="{ '960px': '75vw' }"
+        [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+
+        <app-card (newCardEvent)="addTask($event)" [task]="task" [users]="users" (closeEvent)="closeModal($event)"
+            [isButtonVisible]="true"  (deleteEvent)="deleteTask($event)" [image]="retrievedSanitizedImage" />
+
+    </p-dialog>
+
+</div>
+
+
+<p-table #dt1 selectionMode="single" [(selection)]="selectedTask" dataKey="id" [value]="tasks"
+    styleClass="p-datatable-striped p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }" 
+    [paginator]="true"  (onPage)="pageChange($event)" [lazy]="true" (onLazyLoad)="loadTasksPaginated($event)"
+    [totalRecords]="totalRecords"  [loading]="loading"
+    [rows]="rows" [rowsPerPageOptions]="[1, 5, 10, 20]" [scrollable]="true" scrollHeight="400px">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            <p-button (click)="loadTasksPaginated(null)" icon="pi pi-refresh"></p-button>
+            <p-button (click)="showDialog(null)" label="New task"/>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="id" style="width:20%">Id <p-sortIcon field="id"></p-sortIcon></th>
+            <th pSortableColumn="title" style="width:20%"> Title <p-sortIcon field="title"></p-sortIcon></th>
+            <th pSortableColumn="dir" style="width:20%">Dir <p-sortIcon field="dir"></p-sortIcon></th>
+            <th pSortableColumn="description" style="width:20%">Description <p-sortIcon
+                    field="description"></p-sortIcon></th>
+            <th style="width:20%">Edit/Delete</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-task>
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.dir }}</td>
+            <td>{{ task.description }}</td>
+            <td> <p-button (click)="showDialog(task.id)" label="Edit/Delete">
+            </p-button></td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            Total {{tasks ? totalRecords : 0 }} tasks.
+        </div>
+        <div>
+            <p-toast></p-toast>
+        </div>
+    </ng-template>
+</p-table>

@@ -1,0 +1,66 @@
+<!--h2 style="color: green">TODO</h2-->
+
+<div style="text-align: center">
+
+    <p-dialog [modal]="true" header="TODO" *ngIf="BasicShow" [(visible)]="BasicShow" [breakpoints]="{ '960px': '75vw' }"
+        [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+        <app-card (newCardEvent)="addTask($event)" [task]="task" [users]="users" (closeEvent)="closeModal($event)"
+            [isButtonVisible]="true" (deleteEvent)="deleteTask($event)" />
+
+    </p-dialog>
+
+    <p-button (click)="showDialog(null)" label="New task">
+    </p-button>
+</div>
+
+
+<div class="card">
+    <p-splitter [style]="{ height: '750px' }" styleClass="mb-5">
+        <ng-template pTemplate>
+            <div class="col flex align-items-center justify-content-center">
+                Initialized
+                <p-carousel [value]="initializedTasks" [numVisible]="4" [circular]="true" verticalViewPortHeight="560px"
+                    orientation="vertical" ngClass="hidePaginator">
+                    <ng-template let-initializedTask pTemplate="item">
+                        <div class="drop-column"  pDraggable (onDragStart)="dragStart(initializedTask)"
+                            (onDragEnd)="dragEnd()" pDroppable (onDrop)="drop('INITIALIZED')">
+                            <app-card-min *ngIf="initializedTask.state==='INITIALIZED'"
+                                (click)="showDialog(initializedTask.id)" [task]="initializedTask" />
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+        </ng-template>
+        <ng-template pTemplate>
+            <div class="col flex align-items-center justify-content-center">
+                Assigned
+                <p-carousel [value]="asignedTasks" [numVisible]="4" [circular]="true" verticalViewPortHeight="560px"
+                    orientation="vertical">
+                    <ng-template let-asignedTask pTemplate="item">
+                        <div class="drop-column" pDraggable (onDragStart)="dragStart(asignedTask)"
+                            (onDragEnd)="dragEnd()" pDroppable (onDrop)="drop('ASSIGNED')">
+                            <app-card-min *ngIf="asignedTask.state==='ASSIGNED'" (click)="showDialog(asignedTask.id)"
+                                [task]="asignedTask" />
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+        </ng-template>
+        <ng-template pTemplate>
+            <div class="col flex align-items-center justify-content-center">
+                Finished
+                <p-carousel [value]="finishedTasks" [numVisible]="4" [circular]="true" verticalViewPortHeight="560px"
+                    orientation="vertical" ngClass="hidePaginator">
+                    <ng-template let-finishedTask pTemplate="item">
+                        <div class="drop-column" pDraggable (onDragStart)="dragStart(finishedTask)"
+                            (onDragEnd)="dragEnd()" pDroppable (onDrop)="drop('FINISHED')">
+                            <app-card-min *ngIf="finishedTask.state==='FINISHED'" (click)="showDialog(finishedTask.id)"
+                                [task]="finishedTask" />
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+        </ng-template>
+
+    </p-splitter>
+</div>
