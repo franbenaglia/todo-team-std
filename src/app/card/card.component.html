@@ -18,7 +18,7 @@
         <p><label>User:</label>
             <p-dropdown formControlName="user" [(ngModel)]="user" [options]="users" optionLabel="name"
                 placeholder= {{placeHolder}}/>
-            {{user.name}}
+            {{user ? user.name : ''}}
         </p>
 
         <p><label>State:</label>

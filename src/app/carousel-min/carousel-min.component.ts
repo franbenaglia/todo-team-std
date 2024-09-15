@@ -125,12 +125,14 @@ export class CarouselMinComponent {
       });
     } else {
       this.task = null;
+      this.retrievedSanitizedImage = null;
       this.BasicShow = !this.BasicShow;
     }
   }
 
   getImage(taskId: number) {
-
+    this.retrievedSanitizedImage = null;
+    this.retrievedImage = null;
     return this.cardService.getTaskImage(taskId).subscribe((src) => {
       let reader = new FileReader();
       reader.addEventListener("load", () => {

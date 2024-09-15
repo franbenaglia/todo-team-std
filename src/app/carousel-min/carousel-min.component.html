@@ -5,7 +5,7 @@
     <p-dialog [modal]="true" header="TODO" *ngIf="BasicShow" [(visible)]="BasicShow" [breakpoints]="{ '960px': '75vw' }"
         [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
         <app-card (newCardEvent)="addTask($event)" [task]="task" [users]="users" (closeEvent)="closeModal($event)"
-            [isButtonVisible]="true" (deleteEvent)="deleteTask($event)" />
+            [isButtonVisible]="true" (deleteEvent)="deleteTask($event)" [image]="retrievedSanitizedImage" />
 
     </p-dialog>
 

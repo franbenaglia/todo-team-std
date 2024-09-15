@@ -109,6 +109,7 @@ export class TaskListComponent {
       });
     } else {
       this.task = null;
+      this.retrievedSanitizedImage = null;
       this.basicShow = !this.basicShow;
     }
   }

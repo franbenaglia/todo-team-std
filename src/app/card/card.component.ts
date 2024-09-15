@@ -111,8 +111,6 @@ export class CardComponent implements OnInit {
   }
 
   onFileChange(event) {
-    console.log('laimagen: ');
-    console.log(this.image);
     if (event.target.files.length > 0) {
       let file = event.target.files[0];
       this.form.get('avatar').setValue(file);

@@ -21,6 +21,7 @@ export class ContainerCarouselComponent {
   //TODO LLEVAR LA LOGICA DEL CRUD A CONTAINER COMPONENT
   tasks: Task[] = [];
   users: User[] = [];
+  user: String = '';
 
   BasicShow: boolean = false;
 
